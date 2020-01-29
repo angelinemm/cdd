@@ -64,3 +64,35 @@ impl Stats {
         Stats { averages }
     }
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn test_simple() {
+        let blueberry_pie: Record = Record {
+            name: "Blueberry Pie".to_string(),
+            shop: "Pol".to_string(),
+            category: "Pie".to_string(),
+            grades: vec![Some(5.0), Some(4.0)],
+        };
+
+        let carrot_cake: Record = Record {
+            name: "Carrot Cake".to_string(),
+            shop: "Corner Shop".to_string(),
+            category: "Cake".to_string(),
+            grades: vec![Some(3.0), Some(3.5)],
+        };
+
+        let stats: Stats = Stats::from_records(vec![blueberry_pie, carrot_cake]);
+
+        assert_eq!(stats.averages.len(), 2);
+
+        assert_eq!(stats.averages[0].cake.name, "Blueberry Pie");
+        assert_eq!(stats.averages[0].grade, 450);
+
+        assert_eq!(stats.averages[1].cake.name, "Carrot Cake");
+        assert_eq!(stats.averages[1].grade, 325);
+    }
+}
