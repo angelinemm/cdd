@@ -14,7 +14,13 @@ Blueberry Pie,Corner shop,Tart(elette),5,5
 Caramel Tartelette,Corner shop,Tart(elette),2.5,
 Croissant,Boulangerie,Pastry,2.5,2
 ```
+
 To run: 
 ```
 cargo run
+```
+
+To run tests:
+```
+cargo test
 ```
